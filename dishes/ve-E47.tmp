@@ -1,0 +1,45 @@
+CREATE database task
+go
+
+CREATE TABLE dishes(
+	dishid CHAR(10) PRIMARY KEY,		--菜品编号
+	dishname VARCHAR(20) NOT NULL,		--菜品名
+	dishprice DECIMAL(8,2) NOT NULL,	--价格
+)
+go
+
+/**视图设计*/
+/**查询菜品信息*/
+CREATE VIEW v_dishes AS
+	SELECT dishid 菜品编号,
+		   dishname 菜品名,
+		   dishprice 价格
+	FROM dishes
+go
+
+/**增加菜品信息*/
+INSERT INTO v_dishes(菜品编号,菜品名,价格) VALUES(6,'黄焖豆腐',25)
+go
+
+/**删除菜品信息*/
+DELETE V_dishes(dishid) 
+go
+	 
+/**更新菜品信息*/
+UPDATE v_dishes SET 价格 = 5 WHERE 菜品名 = '豆腐拌汤'
+go
+
+/**查询全部菜品*/
+
+SELECT * FROM v_dishes
+
+/**插入数据*/
+insert into dishes values(1,'家常豆腐',17)
+insert into dishes values(2,'麻辣豆腐',15)
+insert into dishes values(3,'油炸豆腐',8)
+insert into dishes values(4,'小葱拌豆腐',20)
+insert into dishes values(5,'豆腐拌汤',10)
+go
+
+/**存储过程*/
+/**查询10块以内的菜*/
